@@ -1,0 +1,41 @@
+version: '3.3'
+services:
+  db:
+    container_name: mysql_db
+    image: mysql:8.0.17
+    restart: always
+    # volumes:
+    #   - ./dump:/docker-entrypoint-initdb.d
+    environment:
+       MYSQL_ROOT_PASSWORD: secret
+       MYSQL_DATABASE: mydb
+      #  MYSQL_USER: root # is create by default
+       MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
+    # networks:
+    #   - proxynet
+#   workbench:
+#     container_name: my_sql_workbench #login - admin & pass - secret
+#     depends_on:
+#       - db
+#     image: ghcr.io/linuxserver/mysql-workbench
+#     restart: always
+#     ports:
+#       - 3000:3000
+#     environment:
+#       - PUID=1000
+#       - PGID=1000
+#       - TZ=Europe/London
+#     cap_add:
+#       - IPC_LOCK
+#       # - UMASK=022
+#      # MYSQL_HOST: db
+#      #  MYSQL_ROOT_PASSWORD: secret
+#     networks:
+#       - proxynet
+# networks:
+#   proxynet:
+#     name: custom_network
+# volumes:
+  #db_data:
